@@ -54,7 +54,7 @@ function nuevoEvento(elemento, evento, funcion) {
 // codigo javascript no intrusivo que asigna al evento onload una funcion
 function addLoadEvent(func) {
     var oldonload = window.onload;
-    if (typeof window.onload != 'function')
+    if (typeof window.onload !== 'function')
         window.onload = func;
     else {
         window.onload = function() {

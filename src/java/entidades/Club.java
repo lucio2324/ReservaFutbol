@@ -2,82 +2,11 @@ package entidades;
 
 public class Club {
     private int id_club;
-    private String nombre_club;
-    private String clave;
-    private String direccion;
-    private String telefono;
-    private String nombreAdministracion;
-   
-
-    /**
-     * @return the nombre_club
-     */
-    public String getNombre_club() {
-        return nombre_club;
-    }
-
-    /**
-     * @param nombre_club the nombre_club to set
-     */
-    public void setNombre_club(String nombre_club) {
-        this.nombre_club = nombre_club;
-    }
-
-    /**
-     * @return the direccion
-     */
-    public String getDireccion() {
-        return direccion;
-    }
-
-    /**
-     * @param direccion the direccion to set
-     */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    /**
-     * @return the telefono
-     */
-    public String getTelefono() {
-        return telefono;
-    }
-
-    /**
-     * @param telefono the telefono to set
-     */
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    /**
-     * @return the nombreAdministracion
-     */
-    public String getNombreAdministracion() {
-        return nombreAdministracion;
-    }
-
-    /**
-     * @param nombreAdministracion the nombreAdministracion to set
-     */
-    public void setNombreAdministracion(String nombreAdministracion) {
-        this.nombreAdministracion = nombreAdministracion;
-    }
-
-    /**
-     * @return the clave
-     */
-    public String getClave() {
-        return clave;
-    }
-
-    /**
-     * @param clave the clave to set
-     */
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
+    private String nombreClub;
+    private String claveClub;
+    private String direccionClub;
+    private String telefonoClub;
+    private String administradorClub;
 
     /**
      * @return the id_club
@@ -93,4 +22,74 @@ public class Club {
         this.id_club = id_club;
     }
 
+    /**
+     * @return the nombreclub
+     */
+    public String getNombreClub() {
+        return nombreClub;
+    }
+
+    /**
+     * @param nombreclub the nombreclub to set
+     */
+    public void setNombreClub(String nombreclub) {
+        this.nombreClub = nombreclub;
+    }
+
+    /**
+     * @return the claveClub
+     */
+    public String getClaveClub() {
+        return claveClub;
+    }
+
+    /**
+     * @param claveClub the claveClub to set
+     */
+    public void setClaveClub(String claveClub) {
+        this.claveClub = claveClub;
+    }
+
+    /**
+     * @return the direccionClub
+     */
+    public String getDireccionClub() {
+        return direccionClub;
+    }
+
+    /**
+     * @param direccionClub the direccionClub to set
+     */
+    public void setDireccionClub(String direccionClub) {
+        this.direccionClub = direccionClub;
+    }
+
+    /**
+     * @return the telefonoClub
+     */
+    public String getTelefonoClub() {
+        return telefonoClub;
+    }
+
+    /**
+     * @param telefonoClub the telefonoClub to set
+     */
+    public void setTelefonoClub(String telefonoClub) {
+        this.telefonoClub = telefonoClub;
+    }
+
+    /**
+     * @return the administradorClub
+     */
+    public String getAdministradorClub() {
+        return administradorClub;
+    }
+
+    /**
+     * @param administradorClub the administradorClub to set
+     */
+    public void setAdministradorClub(String administradorClub) {
+        this.administradorClub = administradorClub;
+    }
+   
 }

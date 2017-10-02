@@ -2,64 +2,50 @@ package entidades;
 
 
 public class Fecha {
-    private int dia_fecha;
-    private int mes_fehca;
-    private int año_fecha;
-    private String hora;
-    private boolean diaponible_fecha;
+    private String diaSemana;
+    private String dia_fecha;
+    private String mes_fecha;
+    private String ano_fecha;
+
+    /**
+     * @return the diaSemana
+     */
+    public String getDiaSemana() {
+        return diaSemana;
+    }
 
 
-public int getDia_fecha() {
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
+
+    public String getDia_fecha() {
         return dia_fecha;
     }
 
-    
-public void setDia_fecha(int dia_fecha) {
+
+    public void setDia_fecha(String dia_fecha) {
         this.dia_fecha = dia_fecha;
     }
 
 
-public int getMes_fehca() {
-        return mes_fehca;
+    public String getMes_fecha() {
+        return mes_fecha;
     }
 
 
-public void setMes_fehca(int mes_fehca) {
-        this.mes_fehca = mes_fehca;
+    public void setMes_fecha(String mes_fecha) {
+        this.mes_fecha = mes_fecha;
     }
 
 
-public int getAño_fecha() {
-        return año_fecha;
+    public String getAno_fecha() {
+        return ano_fecha;
     }
 
 
-public void setAño_fecha(int año_fecha) {
-        this.año_fecha = año_fecha;
+    public void setAno_fecha(String ano_fecha) {
+        this.ano_fecha = ano_fecha;
     }
-
-
-public String getHora() {
-        return hora;
-    }
-
-
-public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-
-public boolean isDiaponible_fecha() {
-        return diaponible_fecha;
-    }
-
-
-public void setDiaponible_fecha(boolean diaponible_fecha) {
-        this.diaponible_fecha = diaponible_fecha;
-    }
-    
-    
-    
-    
-    
 }

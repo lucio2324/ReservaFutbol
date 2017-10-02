@@ -1,3 +1,5 @@
+/* global peticion_http */
+
 CLUB = {};
 
 CLUB.registrar = function(){
@@ -5,30 +7,36 @@ CLUB.registrar = function(){
 		if ( clubDatos === undefined ) {
 		console.log("todo mal");
 		}else {
-			var json = "json="+clubDatos;	
-			AJAX("registrarClub","POST", CLUB.respuesta, json);
-		}
+			AJAX("fitraFecha","POST", CLUB.respuesta, clubDatos);
+		console.log("Se envio");
+    }
 	
 }
 
 CLUB.respuesta = function() {
-  if(peticion_http.readyState === 4 && peticion_http.status == 200) {
+  if(peticion_http.readyState === 4 && peticion_http.status === 200) {
   	
-  	/****AQUI VA LA RESPUESTA DEL SERVIDOR*/
+  	/*SPAN*/
+       var respRegistro = document.querySelector("#respRegistro");   
+        /****AQUI VA LA RESPUESTA DEL SERVIDOR*/
   		respRegistro.innerHTML = peticion_http.responseText;
     }
-}
+};
 
 CLUB.datos =  function(){
 	var club = {}; 
-	club.nombreClub = inputNombreClub.value;
+	/*club.nombreClub = inputNombreClub.value;
 	club.direccionClub = inputDireccionClub.value;
 	club.telefonoClub = inputTelefonoClub.value;
 	club.administradorClub = inputAdministradorClub.value; 
-	club.claveClub = inputClaveClub.value;
+	club.claveClub = inputClaveClub.value;*/
+    
+        club.dia_fecha = "2";
+        club.mes_fecha = "11";
+        club.ano_fecha = "2017";
 	var clubJSON = JSON.stringify(club);
 	return clubJSON;
-}
+};
 
 
 /*INPUT*/
