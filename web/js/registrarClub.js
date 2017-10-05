@@ -1,53 +1,37 @@
-/* global peticion_http */
+/* global fecha, club, hora, id */
 
 CLUB = {};
 
 CLUB.registrar = function(){
-		var clubDatos = CLUB.datos();
-		if ( clubDatos === undefined ) {
-		console.log("todo mal");
-		}else {
-			AJAX("fitraFecha","POST", CLUB.respuesta, clubDatos);
-		console.log("Se envio");
-    }
-	
-}
-
-CLUB.respuesta = function() {
-  if(peticion_http.readyState === 4 && peticion_http.status === 200) {
-  	
-  	/*SPAN*/
-       var respRegistro = document.querySelector("#respRegistro");   
-        /****AQUI VA LA RESPUESTA DEL SERVIDOR*/
-  		respRegistro.innerHTML = peticion_http.responseText;
-    }
-};
-
-CLUB.datos =  function(){
-	var club = {}; 
-	/*club.nombreClub = inputNombreClub.value;
-	club.direccionClub = inputDireccionClub.value;
-	club.telefonoClub = inputTelefonoClub.value;
-	club.administradorClub = inputAdministradorClub.value; 
-	club.claveClub = inputClaveClub.value;*/
     
-        club.dia_fecha = "2";
-        club.mes_fecha = "11";
-        club.ano_fecha = "2017";
-	var clubJSON = JSON.stringify(club);
-	return clubJSON;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "fitraFecha");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200) 
+        console.log(xhr.responseText);
+    };
+    
+    
+    var datos={
+        id_cliente : "1",
+        id_club : "1",
+        id_cancha : "1" , 
+        hora_hora : "10",
+        disponible_hora : "0", 
+        diaSemana : "Sabado",
+        dia_fecha : "7",
+        mes_fecha : "11",
+        ano_fecha : "2017" 
+    };
+    
+    var json = JSON.stringify(datos);
+    
+    
+xhr.send(json);	
 };
 
 
-/*INPUT*/
-var inputNombreClub =document.querySelector("#nombreClub");
-var inputDireccionClub = document.querySelector("#direccionClub");
-var inputTelefonoClub = document.querySelector("#telefonoClub");
-var inputAdministradorClub = document.querySelector("#administradorClub");
-var inputClaveClub = document.querySelector("#claveClub");
 
-/*SPAN*/
-var respRegistro = document.querySelector("#respRegistro");
 
 /*EVENTOS  DE LOS BOTONES*/
 var btnRegistrar = document.querySelector("#btnRegistrar");

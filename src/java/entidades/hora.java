@@ -2,7 +2,7 @@ package entidades;
 
 public class hora {
     private String hora_hora;
-    private boolean desponible_hora;
+    private String disponible_hora;
 
 
     public String getHora_hora() {
@@ -14,14 +14,20 @@ public class hora {
         this.hora_hora = hora_hora;
     }
 
+    /**
+     * @return the desponible_hora
+     */
+    public String getDisponible_hora() {
+        return disponible_hora;
+    }
 
-    public boolean isDesponible_hora() {
-        return desponible_hora;
+    /**
+     * @param desponible_hora the desponible_hora to set
+     */
+    public void setDisponible_hora(String desponible_hora) {
+        this.disponible_hora = desponible_hora;
     }
 
 
-    public void setDesponible_hora(boolean desponible_hora) {
-        this.desponible_hora = desponible_hora;
-    }
-    
+
 }

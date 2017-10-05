@@ -8,11 +8,40 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class fechaDAO {
+    
+public int insertarFecha(Fecha f){
+    int id=0;
+    Conexion con = new Conexion();
+    Connection reg = con.getConnection();
+    PreparedStatement prs = null;
+    String sql ="INSERT INTO `fecha` (`diaDeSemana`, `dia_fecha`, `mes_fecha`, `ano_fecha`) VALUES (?,?,?,?)";
+        try {
+            prs = reg.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            prs.setString(1, f.getDiaSemana());
+            prs.setString(2, f.getDia_fecha());
+            prs.setString(3, f.getMes_fecha());
+            prs.setString(4, f.getAno_fecha());
+            prs.execute();
+           ResultSet idGenerado = prs.getGeneratedKeys();
+           con.desconectar();
+          
+            if (idGenerado.next()) {
+                id = idGenerado.getInt(1);
+            }
+           return id;
+        } catch (SQLException ex) {
+            Logger.getLogger(fechaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        return id;
+    }
+}
     
     public List recuperaPorFecha (Fecha f){
     

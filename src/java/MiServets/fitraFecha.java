@@ -6,8 +6,10 @@
 package MiServets;
 
 import EntidadDAO.fechaDAO;
+import EntidadDAO.reservasDAO;
 import com.google.gson.Gson;
 import entidades.Fecha;
+import entidades.Reservas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -26,27 +28,25 @@ public class fitraFecha extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {  
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
-     PrintWriter out = response.getWriter();
-         String fecha = request.getReader().readLine();
-    
+     
+    PrintWriter out = response.getWriter();
+         String datosREcividos = request.getReader().readLine();
+
+         reservasDAO insertarReserva = new reservasDAO();
         Gson gson = new Gson();
-        Fecha nuevaFecha =gson.fromJson(fecha, Fecha.class);
+        Reservas nuevaFecha =gson.fromJson(datosREcividos, Reservas.class);
         
-        fechaDAO recuperarPorFecha = new fechaDAO();
-        List horaFiltrarFecha = recuperarPorFecha.recuperaPorFecha(nuevaFecha);
+        String respuesta = insertarReserva.insertarReservas(nuevaFecha);
         
-        String respuesta = gson.toJson(horaFiltrarFecha);
         
-        out.print(respuesta);   
+        out.print(respuesta);
+
     }
-    
-    
+     
 }
