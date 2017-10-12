@@ -3,10 +3,10 @@ package entidades;
 public class Club {
     private String token;
     private String id_club;
-    private String nombre_Club;
-    private String direccion_Club;
+    private String nombre_club;
+    private String direccion_club;
     private String telefono_Club;
-    private String mail_Club;
+    private String mail_club;
     private String foto_Club;
 
     /**
@@ -26,29 +26,29 @@ public class Club {
     /**
      * @return the nombreclub
      */
-    public String getNombre_Club() {
-        return nombre_Club;
+    public String getNombre_club() {
+        return nombre_club;
     }
 
     /**
      * @param nombreclub the nombreclub to set
      */
-    public void setNombre_Club(String nombreclub) {
-        this.nombre_Club = nombreclub;
+    public void setNombre_club(String nombreclub) {
+        this.nombre_club = nombreclub;
     }
 
     /**
-     * @return the direccion_Club
+     * @return the direccion_club
      */
-    public String getDireccion_Club() {
-        return direccion_Club;
+    public String getDireccion_club() {
+        return direccion_club;
     }
 
     /**
-     * @param direccion_Club the direccion_Club to set
+     * @param direccion_club the direccion_club to set
      */
-    public void setDireccion_Club(String direccion_Club) {
-        this.direccion_Club = direccion_Club;
+    public void setDireccion_club(String direccion_club) {
+        this.direccion_club = direccion_club;
     }
 
     /**
@@ -66,17 +66,17 @@ public class Club {
     }
 
     /**
-     * @return the mail_Club
+     * @return the mail_club
      */
-    public String getMail_Club() {
-        return mail_Club;
+    public String getMail_club() {
+        return mail_club;
     }
 
     /**
-     * @param mail_Club the mail_Club to set
+     * @param mail_club the mail_club to set
      */
-    public void setMail_Club(String mail_Club) {
-        this.mail_Club = mail_Club;
+    public void setMail_club(String mail_club) {
+        this.mail_club = mail_club;
     }
 
     /**

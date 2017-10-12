@@ -2,12 +2,15 @@ package EntidadDAO;
 
 import conexioBD.Conexion;
 import entidades.Club;
+import entidades.ClubM;
 import entidades.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class clubDAO {
     
@@ -50,7 +53,7 @@ public Club validar(String id){
     Conexion con = new Conexion();
     Connection reg = con.getConnection();
     PreparedStatement prs = null;
-    String sql ="SELECT * FROM `club` WHERE id_usuario =?";
+    String sql ="SELECT * FROM `club` WHERE id_club =?";
         try {
             prs = reg.prepareStatement(sql);
             prs.setString(1,id);
@@ -59,16 +62,39 @@ public Club validar(String id){
             if (rs.next()) {
       
                 club.setId_club(rs.getString(1));
-                club.setNombre_Club(rs.getString(2));
-                club.setDireccion_Club(rs.getString(3));
+                club.setNombre_club(rs.getString(2));
+                club.setDireccion_club(rs.getString(3));
                 club.setTelefono_Club(rs.getString(4));
-                club.setMail_Club(rs.getString(5));
+                club.setMail_club(rs.getString(5));
                 club.setFoto_Club(rs.getString(6));  
             }
             return club;
         } catch (SQLException e) {
-            club.setNombre_Club(e.getMessage());
+            club.setNombre_club(e.getMessage());
              return club;
+        }
+    }
+
+public String recuperarId(String id){
+     
+    Conexion con = new Conexion();
+    Connection reg = con.getConnection();
+    PreparedStatement prs = null;
+    String sql ="SELECT * FROM `club` WHERE id_usuario =?";
+        try {
+            prs = reg.prepareStatement(sql);
+            prs.setString(1,id);
+            ResultSet rs = prs.executeQuery(); 
+             con.desconectar();
+             String id_club= "";
+            if (rs.next()) {
+      
+                id_club =rs.getString(1);
+               return id_club;  
+            }
+     
+        } catch (SQLException e) {
+             return e.getMessage();
         }
     }
 
@@ -87,7 +113,7 @@ public Club validar(String id){
     String sql ="SELECT * FROM `club` WHERE nombre_usuario =?";
         try {
             prs = reg.prepareStatement(sql);
-            prs.setString(1, c.getNombre_Club());
+            prs.setString(1, c.getNombre_club());
             ResultSet rs = prs.executeQuery(); 
               if (rs.next()) {
                  id = rs.getString(1);
@@ -107,6 +133,27 @@ public Club validar(String id){
              return e.getMessage();
         }
     }
+  
+  public String modificarClub (Club c){
+  Conexion con = new Conexion();
+  Connection reg = con.getConnection();
+  PreparedStatement prs = null;
+  String sql = "UPDATE `club` SET `nombre_club` = ?,`direccion_club` = ?,`e-mail_club` = ? WHERE `club`.`id_club` = ?";
+      try {
+          prs = reg.prepareStatement(sql);
+          prs.setString(1,c.getNombre_club());
+          prs.setString(2,c.getDireccion_club());
+          prs.setString(3,c.getMail_club());
+          prs.setString(4,c.getId_club());
+          prs.execute();
+         con.desconectar();
+         
+         return "ok";
+      } catch (SQLException ex) {
+          return ex.getMessage();
+      }
+  }
+  
 }
 
 

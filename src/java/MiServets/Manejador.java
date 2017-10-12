@@ -3,12 +3,11 @@ package MiServets;
 import EntidadDAO.ClienteDAO;
 import EntidadDAO.UsuarioDAO;
 import EntidadDAO.clubDAO;
-import EntidadDAO.reservasDAO;
 import Tokens.CodificarToken;
 import com.google.gson.Gson;
 import entidades.Cliente;
 import entidades.Club;
-import entidades.Reservas;
+import entidades.ClubM;
 import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,31 +26,15 @@ public class Manejador extends HttpServlet {
             throws ServletException, IOException {
    
        PrintWriter out = response.getWriter();
-       String nombreU = request.getParameter("email");
-       String datosREcividos = request.getReader().readLine();
-
-        Gson gson = new Gson();
-        Usuario nuevoUsuario =gson.fromJson(datosREcividos, Usuario.class);
-        
-       UsuarioDAO validar = new UsuarioDAO();
-        String resul = validar.validar(nuevoUsuario);
+       String id_club= request.getParameter("id_club");
        
-       String[] resultado = resul.split(",");
-       String id = resultado[0];
-       String nombre = resultado[1];
-       String clave= resultado[3];
-       String rol = resultado[4];
-       
-       if (nombre.equals(nuevoUsuario.getNombre_usuario()) && clave.equals(nuevoUsuario.getClave_usuario())){
-           
-           CodificarToken token = new CodificarToken();
-           
-           String res = token.token(nuevoUsuario.getNombre_usuario());
-           
-           out.print(res);
-       }else{
-           out.print("El usuario o la contraseñan con incorrectos");
-     }
+       Gson gson = new Gson();
+      clubDAO validar = new clubDAO();
+      Club club = validar.validar(id_club);
+      
+      String resul= gson.toJson(club);
+      out.print(resul);
+     
  }
    
     
@@ -69,7 +52,7 @@ public class Manejador extends HttpServlet {
 if (nuevoUsuario.getRol_usuario() == null) {
         
         String resul = validar.validar(nuevoUsuario);
-    if (resul != null) {
+    if (!"".equals(resul)) {
        String[] resultado = resul.split(",");
        String id = resultado[0];
        String nombre = resultado[1];
@@ -84,9 +67,10 @@ if (nuevoUsuario.getRol_usuario() == null) {
            String res = "";
            if (rol.equals("administrador")){
              res = token.token(nuevoUsuario.getNombre_usuario());  
-               club = recuperar.validar(id);
+               String id_club = recuperar.recuperarId(id);
                
             club.setToken(res);
+            club.setId_club(id_club);
             
            String respuesta = gson.toJson(club);
            out.print(respuesta);
@@ -127,4 +111,20 @@ if (nuevoUsuario.getRol_usuario() == null) {
         }  
     }
   }
+    
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+       String datosREcividos = request.getReader().readLine();
+
+        Gson gson = new Gson();
+        Club nuevoUsuario = gson.fromJson(datosREcividos, Club.class);
+        clubDAO modificar = new clubDAO();
+        
+        String resul = modificar.modificarClub(nuevoUsuario);
+        
+        out.print(resul);
+        
+    }
 }

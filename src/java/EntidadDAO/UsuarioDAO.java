@@ -62,7 +62,7 @@ public class UsuarioDAO {
             return resultado;
             
         } catch (SQLException e) {
-             return e.getMessage();
+             return null;
         }
     }
 }
