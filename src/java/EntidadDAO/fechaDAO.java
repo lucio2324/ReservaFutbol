@@ -1,6 +1,5 @@
 package EntidadDAO;
 
-
 import conexioBD.Conexion;
 import entidades.Fecha;
 import java.sql.Connection;

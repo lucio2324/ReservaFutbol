@@ -1,40 +1,36 @@
 package entidades;
 
-import java.util.Date;
-
 public class Cancha {
-    private String Mendidas;
+    private String nombre;
     private String id_club;
-    private String id_fecha;
 
-
-public String getMendidas() {
-        return Mendidas;
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
     }
 
-
-public void setMendidas(String Mendidas) {
-        this.Mendidas = Mendidas;
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-
-public String getId_club() {
+    /**
+     * @return the id_club
+     */
+    public String getId_club() {
         return id_club;
     }
 
-
-public void setId_club(String id_club) {
+    /**
+     * @param id_club the id_club to set
+     */
+    public void setId_club(String id_club) {
         this.id_club = id_club;
     }
 
-
-public String getId_fecha() {
-        return id_fecha;
-    }
-
-
-public void setId_fecha(String id_fecha) {
-        this.id_fecha = id_fecha;
-    }
-       
+ 
 }

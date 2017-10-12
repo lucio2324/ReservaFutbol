@@ -1,7 +1,12 @@
 package MiServets;
 
+import EntidadDAO.ClienteDAO;
 import EntidadDAO.UsuarioDAO;
+import EntidadDAO.clubDAO;
+import EntidadDAO.reservasDAO;
 import Tokens.CodificarToken;
+import com.google.gson.Gson;
+import entidades.Reservas;
 import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,53 +24,91 @@ public class Manejador extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
    
-        String usuario =request.getParameter("usuario");
-        String clave =request.getParameter("clave");
-         
-        PrintWriter out = response.getWriter();
-        UsuarioDAO validar = new UsuarioDAO();
-        String resul = validar.validar(usuario);
+       PrintWriter out = response.getWriter();
+       String nombreU = request.getParameter("email");
+       String datosREcividos = request.getReader().readLine();
+
+        Gson gson = new Gson();
+        Usuario nuevoUsuario =gson.fromJson(datosREcividos, Usuario.class);
         
+       UsuarioDAO validar = new UsuarioDAO();
+        String resul = validar.validar(nuevoUsuario);
+       
        String[] resultado = resul.split(",");
        String id = resultado[0];
        String nombre = resultado[1];
-       String correo = resultado[2];
-       String contraseña = resultado[3];
-       String tipoUsuario = resultado[4];
+       String clave= resultado[3];
+       String rol = resultado[4];
        
-       if (nombre.equals(usuario) && contraseña.equals(clave)){
+       if (nombre.equals(nuevoUsuario.getNombre_usuario()) && clave.equals(nuevoUsuario.getClave_usuario())){
            
            CodificarToken token = new CodificarToken();
            
-           String res = token.token(usuario);
+           String res = token.token(nuevoUsuario.getNombre_usuario());
            
            out.print(res);
        }else{
-           out.print("La contraseña es incorecta");
-       }
-       }
+           out.print("El usuario o la contraseñan con incorrectos");
+     }
+ }
    
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
-        String usuario =request.getParameter("usuario");
-        String correo =request.getParameter("correo");
-        String clave =request.getParameter("clave");
-        String tipo =request.getParameter("tipo");
-        PrintWriter out = response.getWriter();
-        Usuario u = new Usuario();
-        u.setNombreUsuario(usuario);
-        u.setMail(correo);
-        u.setContraseña(clave);
-        u.setTipoUsuario(tipo);
+         PrintWriter out = response.getWriter();
+         String datosRecividos = request.getReader().readLine();
+
+        Gson gson = new Gson();
+        Usuario nuevoUsuario = gson.fromJson(datosRecividos, Usuario.class);
+        UsuarioDAO validar = new UsuarioDAO();
         
-        UsuarioDAO ingresar = new UsuarioDAO();
-        String resul = ingresar.agregarUsuario(u);
+if (nuevoUsuario.getRol_usuario() == null) {
         
-        out.print(resul);
+        String resul = validar.validar(nuevoUsuario);
+    if (resul != null) {
+       String[] resultado = resul.split(",");
+       String id = resultado[0];
+       String nombre = resultado[1];
+       String clave= resultado[2];
+       String rol = resultado[3];
+       
+       if(clave.equals(nuevoUsuario.getClave_usuario())){
+           
+           CodificarToken token = new CodificarToken();
+           
+           String res = token.token(nuevoUsuario.getNombre_usuario());
+           
+           out.print(res);
+       }else {
+       out.print("La contraseña es incorrecta");
+       }
+   }else {
+    out.print("El usuario o la contraseñan con incorrectos");
     }
-
-
+       
+}else{
+        
+        clubDAO ingresarClub = new clubDAO();
+        ClienteDAO ingresarCliente = new ClienteDAO();
+        
+        String resul = validar.validar(nuevoUsuario);
+       
+    if (resul.equals("")) {
+            String result ="";
+        String rol = nuevoUsuario.getRol_usuario();
+        if (rol.equals("administrador")) {
+             ingresarClub.agregarClub(nuevoUsuario);
+             result = "Ok";
+        }else{
+             ingresarCliente.agregarCliente(nuevoUsuario);
+             result = "Ok";
+        }
+        out.print(result);
+    }else{
+        out.print("El usuario ya existe");
+        }  
+    }
+  }
 }

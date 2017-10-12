@@ -6,60 +6,61 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class UsuarioDAO {
     
     public String agregarUsuario (Usuario u){
-    String resultdo = "funciono";
+   Integer id = 0;
     Conexion con = new Conexion();
     Connection reg = con.getConnection();
     PreparedStatement prs = null;
-    String sql ="INSERT INTO `usuarios` (`nombre_usuario`, `e-mail_usuario`, `contrasena_usuario`, `tipo_usuario`) VALUES (?,?,?,?)";
+    String sql ="INSERT INTO `usuario` (`nombre_usuario`, `clave_usuario`, `rol_usuario`) VALUES (?,?,?);";
         try {
-            prs = reg.prepareStatement(sql);
-            prs.setString(1, u.getNombreUsuario());
-            prs.setString(2, u.getMail());
-            prs.setString(3, u.getContraseña());
-            prs.setString(4, u.getTipoUsuario());
+            prs = reg.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            prs.setString(1, u.getNombre_usuario());
+            prs.setString(2, u.getClave_usuario());
+            prs.setString(3, u.getRol_usuario());
             prs.execute();
+            ResultSet idUsuario = prs.getGeneratedKeys();
             con.desconectar();
             
-            return resultdo;
+            if (idUsuario.next()) {
+                id = idUsuario.getInt(1);
+            }
+          String resultdo = id.toString();
+            
+            return resultdo+","+u.getNombre_usuario();
         } catch (SQLException e) {
              return e.getMessage();
         }
      
     }
     
-    public String validar (String nombre){
+    public String validar (Usuario u){
      
-          String id = null;
-          String usuario = null;
-          String mail = null;
-          String clave =null;
-          String tipo = null;
-    String resultado=null;
+    String resultado = "";    
     Conexion con = new Conexion();
     Connection reg = con.getConnection();
     PreparedStatement prs = null;
-    String sql ="SELECT * FROM `usuarios` WHERE nombre_usuario =?";
+    String sql ="SELECT * FROM `usuario` WHERE nombre_usuario =?";
         try {
             prs = reg.prepareStatement(sql);
-            prs.setString(1, nombre);
+            prs.setString(1, u.getNombre_usuario());
             ResultSet rs = prs.executeQuery(); 
               if (rs.next()) {
-                 id = rs.getString(1);
-                 usuario = rs.getString(2);
-                 mail = rs.getString(3);
-                 clave = rs.getString(4);
-                 tipo = rs.getString(5);
-            }
-       
-              resultado = id+","+usuario+","+mail+","+clave+","+tipo;
+               String id = rs.getString(1);
+               String nombre = rs.getString(2);
+               String clave = rs.getString(3);
+               String rol = rs.getString(4);
+            
+              resultado = id+","+nombre+","+clave+","+rol;
+              
+              }
               
             con.desconectar();
-            
             return resultado;
+            
         } catch (SQLException e) {
              return e.getMessage();
         }

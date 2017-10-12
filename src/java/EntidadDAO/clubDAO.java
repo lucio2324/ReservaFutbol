@@ -2,30 +2,41 @@ package EntidadDAO;
 
 import conexioBD.Conexion;
 import entidades.Club;
+import entidades.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.Statement;
 
 public class clubDAO {
     
-        public String agregarClub(Club c){
-    String resultdo = "Se Gurdao correctamente el club";
+  public String agregarClub(Usuario u){
+     UsuarioDAO ingresarUsurio = new UsuarioDAO();
+     String idUsuario = ingresarUsurio.agregarUsuario(u);
+     
+     Integer id =0;
+    String resultdo = "";
     Conexion con = new Conexion();
     Connection reg = con.getConnection();
     PreparedStatement prs = null;
-    String sql ="INSERT INTO `club` (`nombre_club`, `clave`, `direccion_chub`, `telefono_club`, `administrador_club`) VALUES(?,?,?,?,?)";
+    String sql ="INSERT INTO `club` (`nombre_club`, `direccion_chub`, `telefono_club`, `e-mail_club`,`foto_usuario`, `id_usuario`) VALUES (?,?,?,?,?,?)";
         try {
-            prs = reg.prepareStatement(sql);
-            prs.setString(1, c.getNombreClub());
-            prs.setString(2, c.getClaveClub());
-            prs.setString(3, c.getDireccionClub());
-            prs.setString(4, c.getTelefonoClub());
-            prs.setString(5, c.getAdministradorClub());
+            prs = reg.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            prs.setString(1,u.getNombre_usuario());
+            prs.setString(2, null);
+            prs.setString(3,null);
+            prs.setString(4, u.getEmail_usuario());
+            prs.setString(5,null);
+            prs.setString(6,idUsuario);
             prs.execute();
+            ResultSet idClub = prs.getGeneratedKeys();
             con.desconectar();
             
+            if (idClub.next()) {
+                id = idClub.getInt(1);
+            }
+            resultdo = id.toString();
             return resultdo;
         } catch (SQLException e) {
              return e.getMessage();
@@ -56,12 +67,12 @@ public String validar(String nombre){
 
   public String login (Club c){
      
-          String id = null;
-          String nombreClub = null;
-          String clave =null;
-          String direccion = null;
-          String telefono =null;
-          String administrador = null;
+    String id = null;
+    String nombreClub = null;
+    String clave =null;
+    String direccion = null;
+    String telefono =null;
+    String administrador = null;
     String resultado=null;
     Conexion con = new Conexion();
     Connection reg = con.getConnection();
