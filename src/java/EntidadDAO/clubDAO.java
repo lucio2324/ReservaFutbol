@@ -90,9 +90,9 @@ public String recuperarId(String id){
             if (rs.next()) {
       
                 id_club =rs.getString(1);
-               return id_club;  
+                 
             }
-     
+     return id_club;
         } catch (SQLException e) {
              return e.getMessage();
         }
