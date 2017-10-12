@@ -6,6 +6,8 @@ import EntidadDAO.clubDAO;
 import EntidadDAO.reservasDAO;
 import Tokens.CodificarToken;
 import com.google.gson.Gson;
+import entidades.Cliente;
+import entidades.Club;
 import entidades.Reservas;
 import entidades.Usuario;
 import java.io.IOException;
@@ -63,7 +65,7 @@ public class Manejador extends HttpServlet {
         Gson gson = new Gson();
         Usuario nuevoUsuario = gson.fromJson(datosRecividos, Usuario.class);
         UsuarioDAO validar = new UsuarioDAO();
-        
+  //Entra en logeo      
 if (nuevoUsuario.getRol_usuario() == null) {
         
         String resul = validar.validar(nuevoUsuario);
@@ -75,19 +77,34 @@ if (nuevoUsuario.getRol_usuario() == null) {
        String rol = resultado[3];
        
        if(clave.equals(nuevoUsuario.getClave_usuario())){
-           
            CodificarToken token = new CodificarToken();
-           
-           String res = token.token(nuevoUsuario.getNombre_usuario());
+           clubDAO recuperar = new clubDAO();
+           Cliente cliente = new Cliente();
+           Club club = new Club();
+           String res = "";
+           if (rol.equals("administrador")){
+             res = token.token(nuevoUsuario.getNombre_usuario());  
+               club = recuperar.validar(id);
+               
+            club.setToken(res);
+            
+           String respuesta = gson.toJson(club);
+           out.print(respuesta);
+           }else {
+            res = token.token(nuevoUsuario.getNombre_usuario());
            
            out.print(res);
+           }
+           
+           
+           
        }else {
        out.print("La contraseña es incorrecta");
        }
    }else {
     out.print("El usuario o la contraseñan con incorrectos");
     }
-       
+ //Entra registro      
 }else{
         
         clubDAO ingresarClub = new clubDAO();
@@ -99,13 +116,12 @@ if (nuevoUsuario.getRol_usuario() == null) {
             String result ="";
         String rol = nuevoUsuario.getRol_usuario();
         if (rol.equals("administrador")) {
-             ingresarClub.agregarClub(nuevoUsuario);
-             result = "Ok";
+          result = ingresarClub.agregarClub(nuevoUsuario);
+        out.print("ok");
         }else{
-             ingresarCliente.agregarCliente(nuevoUsuario);
-             result = "Ok";
-        }
-        out.print(result);
+          result = ingresarCliente.agregarCliente(nuevoUsuario); 
+        out.print("ok");
+        }  
     }else{
         out.print("El usuario ya existe");
         }  

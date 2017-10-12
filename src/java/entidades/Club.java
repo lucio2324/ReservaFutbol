@@ -1,95 +1,110 @@
 package entidades;
 
 public class Club {
-    private int id_club;
-    private String nombreClub;
-    private String claveClub;
-    private String direccionClub;
-    private String telefonoClub;
-    private String administradorClub;
+    private String token;
+    private String id_club;
+    private String nombre_Club;
+    private String direccion_Club;
+    private String telefono_Club;
+    private String mail_Club;
+    private String foto_Club;
 
     /**
      * @return the id_club
      */
-    public int getId_club() {
+    public String getId_club() {
         return id_club;
     }
 
     /**
      * @param id_club the id_club to set
      */
-    public void setId_club(int id_club) {
+    public void setId_club(String id_club) {
         this.id_club = id_club;
     }
 
     /**
      * @return the nombreclub
      */
-    public String getNombreClub() {
-        return nombreClub;
+    public String getNombre_Club() {
+        return nombre_Club;
     }
 
     /**
      * @param nombreclub the nombreclub to set
      */
-    public void setNombreClub(String nombreclub) {
-        this.nombreClub = nombreclub;
+    public void setNombre_Club(String nombreclub) {
+        this.nombre_Club = nombreclub;
     }
 
     /**
-     * @return the claveClub
+     * @return the direccion_Club
      */
-    public String getClaveClub() {
-        return claveClub;
+    public String getDireccion_Club() {
+        return direccion_Club;
     }
 
     /**
-     * @param claveClub the claveClub to set
+     * @param direccion_Club the direccion_Club to set
      */
-    public void setClaveClub(String claveClub) {
-        this.claveClub = claveClub;
+    public void setDireccion_Club(String direccion_Club) {
+        this.direccion_Club = direccion_Club;
     }
 
     /**
-     * @return the direccionClub
+     * @return the telefono_Club
      */
-    public String getDireccionClub() {
-        return direccionClub;
+    public String getTelefono_Club() {
+        return telefono_Club;
     }
 
     /**
-     * @param direccionClub the direccionClub to set
+     * @param telefono_Club the telefono_Club to set
      */
-    public void setDireccionClub(String direccionClub) {
-        this.direccionClub = direccionClub;
+    public void setTelefono_Club(String telefono_Club) {
+        this.telefono_Club = telefono_Club;
     }
 
     /**
-     * @return the telefonoClub
+     * @return the mail_Club
      */
-    public String getTelefonoClub() {
-        return telefonoClub;
+    public String getMail_Club() {
+        return mail_Club;
     }
 
     /**
-     * @param telefonoClub the telefonoClub to set
+     * @param mail_Club the mail_Club to set
      */
-    public void setTelefonoClub(String telefonoClub) {
-        this.telefonoClub = telefonoClub;
+    public void setMail_Club(String mail_Club) {
+        this.mail_Club = mail_Club;
     }
 
     /**
-     * @return the administradorClub
+     * @return the foto_Club
      */
-    public String getAdministradorClub() {
-        return administradorClub;
+    public String getFoto_Club() {
+        return foto_Club;
     }
 
     /**
-     * @param administradorClub the administradorClub to set
+     * @param foto_Club the foto_Club to set
      */
-    public void setAdministradorClub(String administradorClub) {
-        this.administradorClub = administradorClub;
+    public void setFoto_Club(String foto_Club) {
+        this.foto_Club = foto_Club;
+    }
+
+    /**
+     * @return the token
+     */
+    public String getToken() {
+        return token;
+    }
+
+    /**
+     * @param token the token to set
+     */
+    public void setToken(String token) {
+        this.token = token;
     }
    
 }

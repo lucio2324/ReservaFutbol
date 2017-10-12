@@ -2,6 +2,7 @@ package entidades;
 
 
 public class Usuario {
+    private String id_usuario;
     private String nombre_usuario;
     private String clave_usuario;
     private String rol_usuario;
@@ -47,6 +48,22 @@ public class Usuario {
      */
     public void setRol_usuario(String rol_usuario) {
         this.rol_usuario = rol_usuario;
+    }
+
+ 
+
+    /**
+     * @return the id_usuario
+     */
+    public String getId_usuario() {
+        return id_usuario;
+    }
+
+    /**
+     * @param id_usuario the id_usuario to set
+     */
+    public void setId_usuario(String id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     /**

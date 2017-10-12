@@ -1,10 +1,8 @@
 package MiServets;
 
 import EntidadDAO.canchaDAO;
-import EntidadDAO.reservasDAO;
 import com.google.gson.Gson;
 import entidades.Cancha;
-import entidades.Reservas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

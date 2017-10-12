@@ -44,24 +44,31 @@ public class clubDAO {
      
     }
         
-public String validar(String nombre){
+public Club validar(String id){
      
+    Club club = new Club();
     Conexion con = new Conexion();
     Connection reg = con.getConnection();
     PreparedStatement prs = null;
-    String sql ="SELECT * FROM `club` WHERE nombre_club =?";
+    String sql ="SELECT * FROM `club` WHERE id_usuario =?";
         try {
             prs = reg.prepareStatement(sql);
-            prs.setString(1, nombre);
+            prs.setString(1,id);
             ResultSet rs = prs.executeQuery(); 
              con.desconectar();
             if (rs.next()) {
-                 return "false";
-            }else{
-            return "true";
+      
+                club.setId_club(rs.getString(1));
+                club.setNombre_Club(rs.getString(2));
+                club.setDireccion_Club(rs.getString(3));
+                club.setTelefono_Club(rs.getString(4));
+                club.setMail_Club(rs.getString(5));
+                club.setFoto_Club(rs.getString(6));  
             }
+            return club;
         } catch (SQLException e) {
-             return e.getMessage();
+            club.setNombre_Club(e.getMessage());
+             return club;
         }
     }
 
@@ -80,7 +87,7 @@ public String validar(String nombre){
     String sql ="SELECT * FROM `club` WHERE nombre_usuario =?";
         try {
             prs = reg.prepareStatement(sql);
-            prs.setString(1, c.getNombreClub());
+            prs.setString(1, c.getNombre_Club());
             ResultSet rs = prs.executeQuery(); 
               if (rs.next()) {
                  id = rs.getString(1);

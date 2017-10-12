@@ -30,7 +30,7 @@ public class UsuarioDAO {
             }
           String resultdo = id.toString();
             
-            return resultdo+","+u.getNombre_usuario();
+            return resultdo;
         } catch (SQLException e) {
              return e.getMessage();
         }
