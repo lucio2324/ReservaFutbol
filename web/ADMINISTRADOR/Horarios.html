@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/flexboxgrid.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/index.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/misEstilos.css" rel="stylesheet" type="text/css"/>
+        
+         <style>
+            .succes{
+                background: green;
+            }
+            .cancel{
+                background: red;
+            }
+            #confirmacion{
+                display: none;
+            }
+            #postTareas{
+                display: none;
+            }
+            
+            .checked{
+                background: yellowgreen;
+            }
+        </style>
+    </head>
+    <body>
+
+        <header class="green">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row center-xs">
+                        <div class="col-xs-4">
+                            <a href="#" class="logo">
+                                <img src="../logosEimagenes/logo-futbol.jpg" alt=""/>
+                                <p>FutbolNow</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+        <nav class="black">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <ul>
+                        <li>
+                            <a href="#" class="logoUser">
+                                <ul>
+                                    <li>ALVARO Miranda</li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li><a href="inicioClub.html">Perfil</a></li>
+                        <li><a href="Canchas.html">Cancha</a></li>
+                        <li><a href="#">Horarios</a></li>
+                        <li><a href="#">Reserva</a></li>
+                        <li><a href="../index.html">Salir</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <section>
+            <div class="row">
+                <div class="col-xs-12 yellow ">
+                    
+                     <div id="horarios">
+                <h1>Administrar horarios</h1>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form>
+                            <label for="selectCanchas">Seleccione una cancha</label>
+                            <select id="selectCanchas">
+                                <option value="" disabled selected>Seleccione una opcion</option>
+                                <option>cancha 5</option>
+                                <option>canchas 7</option>
+                                <option>cancha 5 sintetico</option>
+                            </select>
+                            <div id="postTareas">
+                                <label for="servicios">Seleccione un servicio</label>
+                                <select id="servicios">
+                                    <option value="" disabled selected>Seleccione una opcion</option>
+                                    <option>Alquilar</option>
+                                    <option>Escuela</option>
+                                </select>
+                            </div>
+                            <div id="tareas" class="row around-xs center-xs">
+                                <input type="button" id="agregarServicio" class="btn" value="Agregar servicio"/>
+                                <input type="button" id="eliminarServicio" class="btn"  value="Eliminar servicio" />
+                            </div>
+
+                            <div id="confirmacion" class="row around-xs center-xs">
+                                <input type="button" id="confirmar" class="btn" value="Confirmar"/>
+                                <input type="button" id="cancelar" class="btn" value="Cancelar"/>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div id="calendario" class="col-xs-12">      
+                        
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Copyright © 2017 IFTS16 Todos los derechos reservados.</p>
+
+        </footer>
+
+
+
+        <script src="../js/ajax.js" type="text/javascript"></script>
+        <script src="js/Servicio.js" type="text/javascript"></script>
+    </body>
+</html>

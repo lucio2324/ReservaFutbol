@@ -1,21 +1,24 @@
 package entidades;
 
 public class Cancha {
-    private String nombre;
+    private String tamanio;
+    private String superficie;
+    private String foto;
     private String id_club;
+    
 
     /**
-     * @return the nombre
+     * @return the tamaño
      */
-    public String getNombre() {
-        return nombre;
+    public String getTamanio() {
+        return tamanio;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param tamanio the tamaño to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTamanio(String tamanio) {
+        this.tamanio = tamanio;
     }
 
     /**
@@ -30,6 +33,34 @@ public class Cancha {
      */
     public void setId_club(String id_club) {
         this.id_club = id_club;
+    }
+
+    /**
+     * @return the superficie
+     */
+    public String getSuperficie() {
+        return superficie;
+    }
+
+    /**
+     * @param superficie the superficie to set
+     */
+    public void setSuperficie(String superficie) {
+        this.superficie = superficie;
+    }
+
+    /**
+     * @return the foto
+     */
+    public String getFoto() {
+        return foto;
+    }
+
+    /**
+     * @param foto the foto to set
+     */
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
  

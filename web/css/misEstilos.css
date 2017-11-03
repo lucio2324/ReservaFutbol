@@ -1,0 +1,142 @@
+
+
+h1,h2,h3,h4,h5,h6{
+    display: block;
+    margin: 0 10px;
+}
+
+form{
+    margin: auto;
+    padding: 5px;
+    background: darkseagreen;
+    margin-bottom: 25px;
+}
+
+form img{
+    padding: 2px !important;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=file],select
+{
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    padding: 2px 5px;
+    width: 100%;
+}
+
+label{
+    font-weight: bold;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.btn{
+    font-size: 1rem;
+    border: 1px solid grey;
+    padding:  0.3rem 0.3rem;
+    margin-bottom: 10px;
+    border-radius: .25rem;
+    margin: 10px 5px 0;
+
+}
+
+.red{
+    background: tomato;
+}
+
+.green{
+    background: darkolivegreen;
+}
+.black{
+    background: #aaa ;
+}
+
+.separador{
+    width: 80%;
+    margin:10px auto;
+    border-top: 2px dashed black;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+table th, td{
+    width: 80px;
+    height: 40px;
+    border: 1px solid black;
+    margin-right: 1px;
+    box-sizing: border-box;
+}
+
+.scrollTable{
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+
+
+.previsualizacion img{
+    width: 100%;
+    height: auto;
+    padding: 10px 100px ;
+}
+
+table img{
+    width: 70%;
+    height: auto;
+    padding: 5px;
+}
+
+img{
+    display: block;
+    height: auto;
+    width: 80%;
+    margin: auto;
+}
+
+.modal{
+    width:100%; 
+    height:auto; 
+    position:fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.3);
+}
+
+.imgBig{
+    width: 60%;
+    margin: auto auto;
+    display: block;
+    top: 10%;
+    position:relative;
+}
+
+.boton-cerrar{
+    top:0;
+    right: -25px;
+    width: fit-content;
+    padding: 5px;
+    background:#f00;
+    color:#fff;
+    position: absolute;
+    font-weight:bold;
+    font-family:Arial;
+    font-size: 1.5rem;
+    cursor:pointer;
+}
+
+.listaCancha{
+    background: papayawhip;
+   padding: 5px 15px;
+   margin-bottom: 20px;
+    
+}
+

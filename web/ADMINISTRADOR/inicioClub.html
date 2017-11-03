@@ -1,497 +1,83 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>Ingreso</title>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
-        <meta name="referrer" content="origin-when-crossorigin" id="meta_referrer">
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                text-decoration: none;
-            }
-            
-            h1,h2,h3,h4,h5,h6{
-                display: block;
-                margin: 0 10px;
-            }
-            
-            form{
-                margin:10px auto;
-                border: 1px solid black;
-                padding: 5px;
-            }
-            
-            input[type=text], input[type=password], input[type=email], input[type=file],select
-            {
-                display: block;
-                font-size: 1rem;
-                margin-bottom: 15px;
-                padding: 2px 5px;
-                width: 100%;
-            }
-            
-            label{
-                font-weight: bold;
-                font-size: 1rem;
-                display: block;
-                margin-bottom: 5px;
-                text-align: left;
-            }
-            
-            .btn{
-                font-size: 1rem;
-                border: 1px solid grey;
-                padding:  0.3rem 0.3rem;
-                margin-bottom: 10px;
-                border-radius: .25rem;
-            }
-            
-            .separador{
-                width: 80%;
-                margin:10px auto;
-                border-top: 2px dashed black;
-            }
-            
-            table{
-                width: 100%;
-                border-collapse: collapse;
-                margin: 10px 0;
-            }
-            
-           table th, td{
-                width: 80px;
-                height: 40px;
-                border: 1px solid black;
-                margin-right: 1px;
-                box-sizing: border-box;
-            }
-            
-            .scrollTable{
-                overflow-x: auto;
-                overflow-y: auto;
-            }
-            
-            input[type=file]{
-                opacity: 0;
-                display: none;
-            }
-        
-/*            DISPLAY DE de paginas*/
-            #canchas{
-                display: none;
-            }
-            
-            #horarios{
-                display: none;
-            }
-            
-/* ****************************/
-            
-            header {
-                width: 100%;
-                background-color: green;
-            }
-      
-            header .logo{
-                line-height: 60px;
-            }
-            
-            header nav{
-                line-height: 60px;
-            }
-            
-            header .logo a{
-                font-weight: bold;
-                font-size: 20px;
-                color: white;
-            }
-            
-            header .toggle{
-                display: none;
-                line-height: 60px;
-            }
-            
-            header .toggle label{
-                font-weight: bold;
-                color: white;
-                text-decoration: none;  
-                margin: 0;
-                display: block;
-            }
-            
-            header nav a{
-                display: inline-block;
-                font-weight: bold;
-                text-decoration: none;
-                color: white;
-                padding: 0 10px;
-                transition: all 500ms ease;
-                border-radius: 50px;
-            }
-            
-            
-            header nav a:hover {
-                background:#f56f3a;
-            }   
-            
-            @media only screen and (min-width: 48em){
-              header nav {
-             display: block !important;
-            }
-            }
-            
-            
-            
-            @media only screen and (max-width: 48em) {
-                header nav{
-                    display: none;
-                }
-                header .toggle{
-                    display: block;
-                }
-                header nav{
-                    line-height: 30px;
-                }
-                
-                header nav a{
-                    width: 100%;
-                }
-            }
-            
-        </style>
-        <link href="../css/flexboxgrid.min.css" rel="stylesheet" type="text/css"/>
-<!--        <link href="../flexbox/flexboxgrid.css" rel="stylesheet" type="text/css"/>-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/flexboxgrid.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/index.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/misEstilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
-        <header>
-            <div class="container">
-                <div class="row between-sm between-xs">
-                    
-                    <div class="logo col-sm-offset-0 col-sm-2 col-xs-3 "><a href="#">LOGO</a></div>
-                    <div class="toggle col-xs-2"><label for="menu">Menu</label><input type="checkbox" id="menu" style="display:none;"/></div>
-                    <nav class="col-sm-8 col-xs-12 center-xs">
-                        <a id="btnPerfil" href="#">Perfil</a>
-                        <a id="btnCancha" href="#">Cancha</a>
-                        <a id="btnHorarios" href="#">Horarios</a>
-                        <a id="btnReserva" href="#">Reserva</a>
-                        <a id="btnSalir" href="../index.html">Salir</a>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        
-        <div class="container">
-            
-            
-            <div id="perfilClub">
-            <h1>CONTROL DEL PERFIL DEL CLUB</h1>
+
+
+        <header class="green">
             <div class="row">
                 <div class="col-xs-12">
-                    <form>
-                        <label for="nombre">Ingrese nombre del club</label>
-                        <input disabled="disabled" type="text" id="nombre"/>
-                        <label for="direccion">Ingrese direccion del club</label>
-                        <input disabled="disabled" type="text" id="direccion" placeholder="Ej. larrazabal 4500, Capital federal, Buenos Aires, Argenitna"/>
-                        <label for="sitioWeb">Ingrese su sitio web</label>
-                        <input disabled="disabled" type="text" id="sitioWeb">
-                    </form>
-                        <input type="button" class="btn" id="modificar" value="Guardar cambios"/>
-                        <input type="button" class="btn" id="editar" value="Editar"/>
-                </div>
-            </div>
-            </div>
-            <div id=resultadoPerfilClub></div>
-                        
-            
-            
-            <div id="canchas">
-            <h2>Administrar Canchas</h2>
-            <div class="row">
-                <div class="col-xs-12">
-                    <form id="form" name="form" method="post" action="imagenes" enctype="multipart/form-data">
-                    <div class="row bottom-sm between-sm">
-                        <div class="col-sm-6 col-xs-12">
-                            <label for="tamaño">Ingrese un tamaño</label>
-                            <input type="text" id="tamaño" name="tamaño" placeholder="Ej: FUTBOL 5"/>
-                            <label for="archivo">Choose images to upload (PNG, JPG)</label>
-                            <input type="file" id="archivo" name="archivo" class="btn">
-                        </div>
-                        <div class="col-sm-3 col-xs-12">
-                            <input type="button" class="btn" value="Registrar Cancha" id="registrarCancha" />
+                    <div class="row center-xs">
+                        <div class="col-xs-4">
+                            <a href="#" class="logo">
+                                <img src="../logosEimagenes/logo-futbol.jpg" alt=""/>
+                                <p>FutbolNow</p>
+                            </a>
                         </div>
                     </div>
-                    </form>
                 </div>
+            </div>
+
+        </header>
+        <nav>
+            <div class="row">
                 <div class="col-xs-12">
-                    <div class="scrollTable">
-                    <table>
-                        <thead>
-                            <th>Numero de cancha</th>
-                            <th>Tamaño</th>
-                            <th>Acciones</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>celda 1</td>
-                                <td>celda 2</td>
-                                <td><input type="button" class="btn" value="eliminar"/></td>
-                            </tr>
-                            <tr>
-                                <td>celda 1</td>
-                                <td>celda 2</td>
-                                <td><input type="button" class="btn" value="eliminar"/></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </div>    
+                    
+                    <ul>
+                        <li>
+                            <a href="#" class="logoUser">
+                                <ul>
+                                    <li>ALVARO Miranda</li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li><a href="#">Perfil</a></li>
+                        <li><a href="Canchas.html">Cancha</a></li>
+                        <li><a href="Horarios.html">Horarios</a></li>
+                        <li><a href="#">Reserva</a></li>
+                        <li><a href="./index.html">Salir</a></li>
+                    </ul>
                 </div>
-            </div>    
             </div>
-            <div id="resultadoCanchas"></div>
-            
-            
-            <div id="horarios">
-                <h1>Administrar horarios</h1>
-                <div class="row">
-                    <div class="col-md-4 col-xs-12">
-                    <form>
-                        <label for="selectCanchas">Seleccione una cancha</label>
-                        <select id="selectCanchas">
-                                <option value="" disabled selected>Seleccione una opcion</option>
-                                <option>cancha 5</option>
-                                <option>canchas 7</option>
-                                <option>cancha 5 sintetico</option>
-                        </select>
-                        <label for="servicios">Seleccione un servicio</label>
-                        <select id="servicios">
-                                <option value="" disabled selected>Seleccione una opcion</option>
-                                <option>Alquilar</option>
-                                <option>Escuela</option>
-                        </select>
-
-                        <input type="button" class="btn" value="Guardar cambios"/>
-                        </form>
+        </nav>
+        <section>
+            <div class="row">
+                <div class="col-xs-12 yellow ">
+                        
+                        <div id="perfilClub">
+                            <h1>DATOS DEL CLUB</h1>
+                           
+                                    <form>
+                                        <label for="nombre">Ingrese nombre del club</label>
+                                        <input disabled="disabled" type="text" id="nombre"/>
+                                        <label for="direccion">Ingrese direccion del club</label>
+                                        <input disabled="disabled" type="text" id="direccion" placeholder="Ej. larrazabal 4500, Capital federal, Buenos Aires, Argenitna"/>
+                                        <label for="sitioWeb">Ingrese su sitio web</label>
+                                        <input disabled="disabled" type="text" id="sitioWeb">
+                                        <input disabled="disabled" type="button" class="btn" id="modificar" value="Guardar cambios"/>
+                                        <input type="button" class="btn" id="editar" value="Editar"/>
+                                    </form>
+                              
                         </div>
-                    <div class="col-md-8 col-xs-12">      
-                <div class="scrollTable">
-                <table>
-                    <thead>
-                            <tr>
-                                    <th>Lunes</th>
-                                    <th>Martes</th>
-                                    <th>Miercoles</th>
-                                    <th>Jueves</th>
-                                    <th>Viernes</th>
-                                    <th>Sabado</th>
-                                    <th>Domingo</th>
-                            </tr>
-                    </thead>
-                    <tbody>
-                            <tr>
-                                    <td value="1">8am</td>
-                                    <td value="2">8am</td>
-                                    <td value="3">8am</td>
-                                    <td value="4">8am</td>
-                                    <td value="5">8am</td>
-                                    <td value="6">8am</td>
-                                    <td value="7">8am</td>
-                            </tr>
-                            <tr>
-                                    <td value="8">9am</td>
-                                    <td value="9">9am</td>
-                                    <td value="10">9am</td>
-                                    <td value="11">9am</td>
-                                    <td value="12">9am</td>
-                                    <td value="13">9am</td>
-                                    <td value="14">9am</td>
-                            </tr>
-                            <tr>
-                                    <td value="15">10am</td>
-                                    <td value="16">10am</td>
-                                    <td value="17">10am</td>
-                                    <td value="18">10am</td>
-                                    <td value="19">10am</td>
-                                    <td value="20">10am</td>
-                                    <td value="21">10am</td>
-                            </tr>
-                            <tr>
-                                    <td value="22">11am</td>
-                                    <td value="23">11am</td>
-                                    <td value="24">11am</td>
-                                    <td value="25">11am</td>
-                                    <td value="26">11am</td>
-                                    <td value="27">11am</td>
-                                    <td value="28">11am</td>
-                            </tr>
-                            <tr>
-                                    <td value="29">12am</td>
-                                    <td value="30">12am</td>
-                                    <td value="31">12am</td>
-                                    <td value="32">12am</td>
-                                    <td value="33">12am</td>
-                                    <td value="34">12am</td>
-                                    <td value="35">12am</td>
-                            </tr>
-                            <tr>
-                                    <td value="36">13pm</td>
-                                    <td value="37">13pm</td>
-                                    <td value="38">13pm</td>
-                                    <td value="39">13pm</td>
-                                    <td value="40">13pm</td>
-                                    <td value="41">13pm</td>
-                                    <td value="42">13pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="43">14pm</td>
-                                    <td value="44">14pm</td>
-                                    <td value="45">14pm</td>
-                                    <td value="46">14pm</td>
-                                    <td value="47">14pm</td>
-                                    <td value="48">14pm</td>
-                                    <td value="49">14pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="50">15pm</td>
-                                    <td value="51">15pm</td>
-                                    <td value="52">15pm</td>
-                                    <td value="53">15pm</td>
-                                    <td value="54">15pm</td>
-                                    <td value="55">15pm</td>
-                                    <td value="56">15pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="57">16pm</td>
-                                    <td value="58">16pm</td>
-                                    <td value="59">16pm</td>
-                                    <td value="60">16pm</td>
-                                    <td value="61">16pm</td>
-                                    <td value="62">16pm</td>
-                                    <td value="63">16pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="64">17pm</td>
-                                    <td value="65">17pm</td>
-                                    <td value="66">17pm</td>
-                                    <td value="67">17pm</td>
-                                    <td value="68">17pm</td>
-                                    <td value="69">17pm</td>
-                                    <td value="70">17pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="71">18pm</td>
-                                    <td value="72">18pm</td>
-                                    <td value="73">18pm</td>
-                                    <td value="74">18pm</td>
-                                    <td value="75">18pm</td>
-                                    <td value="76">18pm</td>
-                                    <td value="77">18pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="78">19pm</td>
-                                    <td value="79">19pm</td>
-                                    <td value="80">19pm</td>
-                                    <td value="81">19pm</td>
-                                    <td value="82">19pm</td>
-                                    <td value="83">19pm</td>
-                                    <td value="84">19pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="85">20pm</td>
-                                    <td value="86">20pm</td>
-                                    <td value="87">20pm</td>
-                                    <td value="88">20pm</td>
-                                    <td value="89">20pm</td>
-                                    <td value="90">20pm</td>
-                                    <td value="91">20pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="92">21pm</td>
-                                    <td value="93">21pm</td>
-                                    <td value="94">21pm</td>
-                                    <td value="95">21pm</td>
-                                    <td value="96">21pm</td>
-                                    <td value="97">21pm</td>
-                                    <td value="98">21pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="99">22pm</td>
-                                    <td value="100">22pm</td>
-                                    <td value="101">22pm</td>
-                                    <td value="102">22pm</td>
-                                    <td value="103">22pm</td>
-                                    <td value="104">22pm</td>
-                                    <td value="105">22pm</td>
-                            </tr>
-                            <tr>
-                                    <td value="106">23pm</td>
-                                    <td value="107">23pm</td>
-                                    <td value="108">23pm</td>
-                                    <td value="109">23pm</td>
-                                    <td value="110">23pm</td>
-                                    <td value="111">23pm</td>
-                                    <td value="112">23pm</td>
-                            </tr>
-                    </tbody>
-                </table>
-              </div>
-             </div>
 
+                </div>
             </div>
-            </div>
-            
-        </div>
+        </section>
+
+        <footer>
+            <p>Copyright © 2017 IFTS16 Todos los derechos reservados.</p>
+
+        </footer>
+
+
+
         <script src="../js/ajax.js" type="text/javascript"></script>
-        <script src="../js/Club.js" type="text/javascript"></script>
-        <script src="../js/cancha.js" type="text/javascript"></script>
-        <script type="text/javascript"> 
-            
-            //BOTONES DEL NAV
-            var btnPerfil = document.querySelector("#btnPerfil");
-            var btnCancha = document.querySelector("#btnCancha");
-            var btnHorarios = document.querySelector("#btnHorarios");
-            
-            //SECIONES
-            var perfilClub =document.querySelector("#perfilClub");
-            var canchas = document.querySelector("#canchas");
-            var horarios = document.querySelector("#horarios");
-
-            btnPerfil.addEventListener("click", function(){
-                perfilClub.style.display = "block";
-                canchas.style.display = "none";
-                horarios.style.display = "none";
-
-            }, false);
-
-            btnCancha.addEventListener("click", function(){
-                perfilClub.style.display = "none";
-                canchas.style.display = "block";
-                horarios.style.display = "none";
-
-            }, false);
-            
-            btnHorarios.addEventListener("click", function(){
-                perfilClub.style.display = "none";
-                canchas.style.display = "none";
-                horarios.style.display = "block";
-                
-            }, false);
-            
-            //SELECTOR DEL DOM
-            var toggle = document.querySelector("header .toggle label");
-            toggle.addEventListener("click", function(){
-                var nav =document.querySelector("header nav");
-                
-                if(toggle.control.checked === false){
-                    nav.style.display = "block";
-                }else{
-                    nav.style.display = "none";
-                }
-            }, false);
-            
-            
-        </script>
+        <script src="js/Club.js" type="text/javascript"></script>
     </body>
 </html>

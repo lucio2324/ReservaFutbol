@@ -1,0 +1,97 @@
+@import url("normalize.css");
+
+.red{
+    background: red;
+    padding: 0;
+}
+.orange{
+    background: orange;
+}
+.yellow{
+    background: beige;
+}
+.green{
+    background: green;
+}
+.blue{
+    background: blue;
+}
+
+/*HEADER****************************/
+header{
+    position: relative;
+    left: 25%;
+    width: 75%;
+}
+
+.logo{
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+
+.logo img{
+    padding: 10px 0;
+    box-sizing: border-box;
+    width: 80%;
+    border-radius: 50%;
+}
+header p{
+    margin: 0;
+    padding: 5px 0;
+}
+
+/*NAV******************************/
+nav{
+    position: fixed;
+    width: 25%;
+    top: 0;
+    left: 0;
+}
+
+.logoUser{
+    height: 50px;
+    display: block;
+}
+
+ul li{
+display:block;
+width: 100%;
+padding: 10px 10px;
+box-sizing: border-box;
+}
+
+ul li:hover{
+    background: burlywood;
+}
+
+a{
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+/*SECTION*************************/
+section{
+    position: relative;
+    margin-top: 20px;
+    width: 75%;
+    left: 25%;
+    padding-left: 2%;
+    padding-right: 2%;
+    box-sizing: border-box;
+}
+
+/*FOOTER***************************/
+footer{
+    position: fixed;
+    width: 25%;
+    bottom: 0;
+    left: 0;
+    height: 60px;
+}
+
+footer p{
+    text-align: center;
+    height: auto;
+}
+

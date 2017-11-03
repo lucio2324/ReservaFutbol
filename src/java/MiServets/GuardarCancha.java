@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import entidades.Cancha;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.TreeMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +24,18 @@ public class GuardarCancha extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       PrintWriter out = response.getWriter();
        
+        String idCancha = request.getParameter("id_cancha");
+        canchaDAO cancha = new canchaDAO();
+        Gson gson = new Gson();
+        List horas = cancha.recuperarHorasCancha(idCancha);
+        TreeMap horasDiponibles = new TreeMap<>();
+            
+        horasDiponibles.put("Array_horasDisponibles", horas);
+        String resul=gson.toJson(horasDiponibles);
+        out.println(resul);
+        
     }
 
 

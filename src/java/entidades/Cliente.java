@@ -1,7 +1,5 @@
 package entidades;
 
-import org.bouncycastle.asn1.dvcs.Data;
-
 public class Cliente {
     private String nombre_cliente;
     private String fechaNacimiento_cliente;

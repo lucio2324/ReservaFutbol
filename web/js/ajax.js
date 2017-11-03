@@ -26,3 +26,16 @@ function ajaxHeader(metodo, url){
     return xhr;
     
 };
+
+function ajaxFile(metodo, url){
+     if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else if(window.ActiveXObject) {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    if(xhr){
+        xhr.open(metodo, url);
+    }
+    return xhr;
+    
+};

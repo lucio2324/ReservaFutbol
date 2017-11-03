@@ -7,7 +7,6 @@ import Tokens.CodificarToken;
 import com.google.gson.Gson;
 import entidades.Cliente;
 import entidades.Club;
-import entidades.ClubM;
 import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,15 +25,16 @@ public class Manejador extends HttpServlet {
             throws ServletException, IOException {
    
        PrintWriter out = response.getWriter();
-       String id_club= request.getParameter("id_club");
+       String id_club = request.getParameter("id_club");
        
        Gson gson = new Gson();
-      clubDAO validar = new clubDAO();
-      Club club = validar.validar(id_club);
-      
-      String resul= gson.toJson(club);
-      out.print(resul);
-     
+       clubDAO recuperarClub = new clubDAO();
+       Club club = recuperarClub.validar(id_club);
+       
+       String resul = gson.toJson(club);
+       
+       out.print(resul);
+       
  }
    
     
@@ -52,7 +52,7 @@ public class Manejador extends HttpServlet {
 if (nuevoUsuario.getRol_usuario() == null) {
         
         String resul = validar.validar(nuevoUsuario);
-    if (!"".equals(resul)) {
+    if (resul != "") {
        String[] resultado = resul.split(",");
        String id = resultado[0];
        String nombre = resultado[1];
@@ -67,7 +67,7 @@ if (nuevoUsuario.getRol_usuario() == null) {
            String res = "";
            if (rol.equals("administrador")){
              res = token.token(nuevoUsuario.getNombre_usuario());  
-               String id_club = recuperar.recuperarId(id);
+               String id_club = recuperar.recuperarI(id);
                
             club.setToken(res);
             club.setId_club(id_club);
@@ -86,7 +86,7 @@ if (nuevoUsuario.getRol_usuario() == null) {
        out.print("La contraseña es incorrecta");
        }
    }else {
-    out.print("El usuario o la contraseñan con incorrectos");
+    out.print("El usuario o la contrasenia son incorrectos");
     }
  //Entra registro      
 }else{
@@ -112,7 +112,7 @@ if (nuevoUsuario.getRol_usuario() == null) {
     }
   }
     
-    @Override
+     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
